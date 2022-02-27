@@ -1,4 +1,4 @@
-import pygame
+import pygame, os
 
 from pygame.locals import (
     K_UP,
@@ -16,15 +16,14 @@ SCREEN_HEIGHT = 600
 #Hráč
 class Player(pygame.sprite.Sprite):
     def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.images = []
 
-        super(Player, self).__init__()
-
-        self.surf = pygame.Surface((25, 25))
-
-        self.surf.fill((255, 255, 255))
-
-        self.rect = self.surf.get_rect()
-
+        img = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'character.png')).convert()
+        self.images.append(img)
+        self.image = self.images[0]
+        self.rect = self.image.get_rect()
+        
     def update(self, pressed_keys):
         if pressed_keys[K_UP]:
             self.rect.move_ip(0, -1)
@@ -66,7 +65,7 @@ while running:
 
     screen.fill((0, 0, 0))
 
-    screen.blit(player.surf, player.rect)
+    screen.blit(player.image, player.rect)
 
     pygame.display.flip()
 
