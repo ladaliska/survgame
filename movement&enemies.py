@@ -1,6 +1,4 @@
-
-
-import  pygame,random
+import  pygame,random,os
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 player_speed = 5
@@ -22,12 +20,13 @@ from pygame.locals import (
 #Hráč
 class Player(pygame.sprite.Sprite):
     def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.images = []
 
-        super(Player, self).__init__()
-
-        self.surf = pygame.Surface((25, 25))
-        self.surf.fill((255, 255, 255))
-        self.rect = self.surf.get_rect()
+        img = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'character.png')).convert()
+        self.images.append(img)
+        self.image = self.images[0]
+        self.rect = self.image.get_rect()
         self.current_health = 1000
         self.maximum_health = 1000
         self.health_bar_lenght = 400
@@ -148,11 +147,11 @@ while running:
 
     enemies.update(player.rect)
     for entity in all_sprites:
-        screen.blit(entity.surf, entity.rect)
+        screen.blit(entity.image, entity.rect)
     if pygame.sprite.spritecollideany(player, enemies):
         player.damage_get(10)
         if player.current_health == 0:
             running = False
-    screen.blit(player.surf, player.rect)
+    screen.blit(player.image, player.rect)
     pygame.display.flip()
     clock.tick(60)
