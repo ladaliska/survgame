@@ -6,9 +6,8 @@ color = 0
 
 
 def generate_noise(width, height, island_size):
-    xseed = random.randint(1,100000)
-    yseed = random.randint(1,100000)
-    iterable = [[simplex.noise2(xseed + (j / island_size),yseed + (i / island_size))
+    seed = simplex.seed(random.randint(1, 10000000))
+    iterable = [[simplex.noise2(j / island_size,i / island_size)
                  for j in range(width)] for i in range(height)]
     return iterable
             
