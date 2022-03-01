@@ -82,7 +82,12 @@ class Player(pygame.sprite.Sprite):
 
 class Enemy(pygame.sprite.Sprite):
     def __init__(self):
-        super(Enemy, self).__init__()
+        pygame.sprite.Sprite.__init__(self)
+        self.images = []
+
+        img = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'character.png')).convert()
+        self.images.append(img)
+        self.image = self.images[0]
         self.surf = pygame.Surface((20, 10))
         self.surf.fill((255, 0, 0))
         self.health = 100
