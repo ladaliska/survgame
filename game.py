@@ -39,6 +39,8 @@ def main():
     pixel_size = 1
     new_map = generate_noise(width, height, 100)
     fill_canvas(new_map, pixel_size, surface)
+    pygame.display.flip()
+    pygame.image.save(surface, 'output.png')
     while running == True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
