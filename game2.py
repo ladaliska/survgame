@@ -88,7 +88,7 @@ class Enemy(pygame.sprite.Sprite):
 
         self.images.append(img)
         self.image = self.images[0]
-        self.surf = pygame.Surface((20, 10))
+        self.surf = pygame.Surface((25, 25))
         self.surf.fill((255, 0, 0))
         self.health = 100
         self.rect = self.surf.get_rect(
