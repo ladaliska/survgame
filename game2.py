@@ -2,7 +2,7 @@ import  pygame,random,os
 SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 600
 player_speed = 5
-enemy_speed = -3
+enemy_speed = 3
 
 from pygame.locals import (
     K_UP,
