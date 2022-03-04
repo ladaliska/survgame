@@ -148,7 +148,6 @@ while running:
         pygame.time.set_timer(ADDENEMY,10 + spawn_time)
 
     pressed_keys = pygame.key.get_pressed()
-    screen.fill((0, 0, 0))
     player.update(pressed_keys)
 
     enemies.update(player.rect)
