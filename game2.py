@@ -124,7 +124,8 @@ spawn_time = 10000
 ADDENEMY = pygame.USEREVENT + 1
 #Běžení hry
 while running:
-
+    bg = pygame.image.load(os.path.join("output.png"))
+    pygame.Surface.blit(screen, bg, (0,0))
     for event in pygame.event.get():
         if event.type == KEYDOWN:
             if event.key == K_ESCAPE:
