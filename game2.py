@@ -85,8 +85,8 @@ class Enemy(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         self.images = []
         img = pygame.image.load(os.path.join(os.path.dirname(os.path.realpath(__file__)), 'enemy.png')).convert()
-
-        self.images.append(img)
+        IMAGE_SMALL = pygame.transform.scale(img, (50, 50))
+        self.images.append(IMAGE_SMALL)
         self.image = self.images[0]
         self.surf = pygame.Surface((25, 25))
         self.surf.fill((255, 0, 0))
